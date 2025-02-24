@@ -1,8 +1,24 @@
-# React + Vite
+# Dynamic Comments Dashboard 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React dashboard application for managing and displaying interactive comments. Built with React 18 and Vite, featuring a responsive design and seamless user experience.
 
-Currently, two official plugins are available:
+![Project Preview](https://i.ibb.co/vxLw690P/image.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+
+- 📱 Responsive Grid Layout
+- 🎨 Modern UI/UX Design
+- 💡 Interactive Comment Cards
+- 👤 User Profile Integration
+- ❤️ Like System
+- ⚡ Fast Loading States
+- 🛡️ Error Handling
+- 📱 Mobile-First Approach
+
+## 🛠️ Tech Stack
+
+- React 18
+- Vite
+- Modern CSS (Grid/Flexbox)
+- DummyJSON API
+
