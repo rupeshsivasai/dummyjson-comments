@@ -1,34 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [comments, setComments] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchComments()
+  }, [])
+
+  const fetchComments = async () => {
+    try {
+      const response = await fetch('https://dummyjson.com/comments')
+      const data = await response.json()
+      setComments(data.comments)
+      setLoading(false)
+    } catch (error) {
+      console.error('Error fetching comments:', error)
+      setLoading(false)
+    }
+  }
+
+  if (loading) return <div className="loading">Loading...</div>
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <h1>Comments Section</h1>
+      <div className="comments-grid">
+        {comments.map((comment) => (
+          <div key={comment.id} className="comment-card">
+            <div className="user-info">
+              <h3>{comment.user.fullName}</h3>
+              <span className="username">@{comment.user.username}</span>
+            </div>
+            <p className="comment-body">{comment.body}</p>
+            <div className="comment-footer">
+              <span className="likes">❤️ {comment.likes}</span>
+              <span className="post-id">Post #{comment.postId}</span>
+            </div>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
